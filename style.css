@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 15px;
+    font-family: Arial, sans-serif;
+    background: #202938;
+    color: white;
+    text-align: center;
+}
+
+.game {
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    margin-bottom: 25px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #3985e8;
+    color: white;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #2368c5;
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+.boards {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.layer {
+    padding: 10px;
+    background: #344256;
+    border-radius: 8px;
+}
+
+.layer h3 {
+    margin: 0 0 10px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(var(--size, 6), 36px);
+    gap: 3px;
+}
+
+.cell {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 3px;
+    padding: 0;
+    font-size: 17px;
+    font-weight: bold;
+    background: #aab8c8;
+    color: #172333;
+}
+
+.cell:hover {
+    background: #d0dce8;
+}
+
+.cell.opened {
+    background: #e7edf3;
+    cursor: default;
+}
+
+.cell.flagged {
+    background: #ef9a9a;
+}
+
+.cell.mine {
+    background: #e45b5b;
+}
+
+#message {
+    min-height: 24px;
+    margin: 22px 0;
+}
+
+@media (max-width: 650px) {
+    .boards {
+        gap: 10px;
+    }
+
+    .board {
+        grid-template-columns: repeat(var(--size, 6), 30px);
+        gap: 2px;
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .info {
+        gap: 15px;
+        font-size: 15px;
+    }
+
+
+}
+
+/* 两侧面不可操作 */
+.cell.readonly {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+/* 已翻开的格子 */
+.cell.opened {
+    font-weight: bold;
+    cursor: default;
+}
+
+/* 鼠标悬停时，两侧面不变色 */
+.cell.readonly:hover {
+    background: #aab8c8;
+}
+
+/* 三维邻居高亮：已翻开的格子保留原背景，只加黄色描边 */
+.cell.neighbor-highlight {
+    box-shadow: inset 0 0 0 2px #f0ad2e;
+}
+
+/* 未翻开的邻居用黄色底强调，避免和已翻开的格子混淆；插旗格保留旗子底色 */
+.cell.neighbor-highlight:not(.opened):not(.flagged) {
+    background-color: #ffe08a;
+}
+
+/* 被固定的格子 */
+.cell.opened.pinned {
+    box-shadow: inset 0 0 0 3px #ff5a5a;
+}

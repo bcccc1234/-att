@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 扫雷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game">
+        <h1>💣 3D 扫雷</h1>
+
+        <div class="info">
+            <span>💣 剩余雷数：<b id="mineCount">15</b></span>
+            <span>⏱️ 时间：<b id="timer">0</b> 秒</span>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn">上一组</button>
+            <span id="layerInfo">第 1～3 面</span>
+            <button id="nextBtn">下一组</button>
+        </div>
+
+        <div id="boards" class="boards"></div>
+
+        <p id="message">左键翻开格子，右键插旗。</p>
+
+        <button id="restartBtn">重新开始</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
